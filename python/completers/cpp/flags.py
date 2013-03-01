@@ -45,7 +45,6 @@ class Flags( object ):
     self.flags_for_file = {}
     self.module_for_file = {}
     self.modules = FlagsModules()
-    self.special_clang_flags = _SpecialClangIncludes()
     self.no_extra_conf_file_warning_posted = False
 
   def ModuleForFile( self, filename ):
@@ -77,7 +76,6 @@ class Flags( object ):
       if not results.get( 'flags_ready', True ):
         return None
 
-      results[ 'flags' ] += self.special_clang_flags
       sanitized_flags = _SanitizeFlags( results[ 'flags' ] )
 
       if results[ 'do_cache' ]:
